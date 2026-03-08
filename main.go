@@ -4,15 +4,15 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"time"
 )
-
 func main() {
 	m := http.NewServeMux()
 
 	m.HandleFunc("/", handlePage)
 
-	const port = "8010"
+	port := os.Getenv("PORT")
 	srv := http.Server{
 		Handler:      m,
 		Addr:         ":" + port,
@@ -30,12 +30,15 @@ func main() {
 func handlePage(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
 	w.WriteHeader(200)
-	const page = `<html>
-<head></head>
-<body>
-	<p> Hello from Docker! I'm a Go server. </p>
-</body>
-</html>
-`
+	const page = 
+	`
+	<html>
+		<head>
+		</head>
+		<body>
+			<p>Hello from Docker!     0perjk fopwrjfpwj  I'm a Go server.</p>
+		</body>
+	</html>
+	`
 	w.Write([]byte(page))
 }
