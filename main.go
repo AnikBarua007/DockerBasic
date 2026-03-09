@@ -13,6 +13,9 @@ func main() {
 	m.HandleFunc("/", handlePage)
 
 	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8991"
+	}
 	srv := http.Server{
 		Handler:      m,
 		Addr:         ":" + port,
@@ -36,7 +39,7 @@ func handlePage(w http.ResponseWriter, r *http.Request) {
 		<head>
 		</head>
 		<body>
-			<p>Hello from Docker!     0perjk fopwrjfpwj  I'm a Go server.</p>
+			<p> Hi Docker, I pushed a new version. </p>
 		</body>
 	</html>
 	`
